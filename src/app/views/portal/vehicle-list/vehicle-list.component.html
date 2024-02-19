@@ -1,0 +1,27 @@
+<p>vehicle-list works!</p>
+<p-table [value]="vehicles" [tableStyle]="{ 'min-width': '50rem' }">
+  <ng-template pTemplate="header">
+      <tr>
+          <th>Name</th>
+          <th>Manufacturer</th>
+          <th>Model</th>
+          <th>Year</th>
+          <th>Type</th>
+          <th>Fuel type</th>
+          <th>License plate</th>
+          <th>Active</th>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-vehicle>
+      <tr>
+          <td>{{ vehicle.name }}</td>
+          <td>{{ vehicle.manufacturer }}</td>
+          <td>{{ vehicle.model }}</td>
+          <td>{{ vehicle.year }}</td>
+          <td>{{ vehicle.type }}</td>
+          <td>{{ vehicle.fuelType }}</td>
+          <td>{{ vehicle.licensePlate }}</td>
+          <td>{{ vehicle.active }}</td>
+      </tr>
+  </ng-template>
+</p-table>

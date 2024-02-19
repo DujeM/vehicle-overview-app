@@ -1,0 +1,16 @@
+<p-card header="Sign in to AVL Vehicle Overview App">
+  <form [formGroup]="loginForm">
+    <span class="p-float-label">
+      <input pInputText id="username" formControlName="username" />
+      <label for="username">Username</label>
+    </span>
+    <span class="p-float-label">
+      <p-password formControlName="password" [feedback]="false"></p-password>
+      <label for="password">Password</label>
+      <p class="error-message" *ngIf="password.errors?.['passwordStrength']">
+        Your password must be at least 8 characters long, have an upper case letter, numeric and special characters.
+      </p>
+    </span>
+    <p-button label="Sign In" (onClick)="login()"></p-button>
+  </form>
+</p-card>
