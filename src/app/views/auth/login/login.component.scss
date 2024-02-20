@@ -13,7 +13,11 @@ form {
   gap: 30px;
 }
 
-.p-inputtext {
+.p-inputtext, .p-float-label {
+  width: 100%;
+}
+
+::ng-deep .p-password {
   width: 100%;
 }
 
