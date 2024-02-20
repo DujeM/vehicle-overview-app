@@ -4,8 +4,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PrimengModule } from './primeng.module';
 import { RouterModule } from '@angular/router';
 
+import { VehicleNamePipe } from './pipes/index';
+
 @NgModule({
-  declarations: [],
+  declarations: [VehicleNamePipe],
   imports: [
     CommonModule,
     RouterModule,
@@ -13,6 +15,6 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule,
     PrimengModule,
   ],
-  exports: [FormsModule, ReactiveFormsModule, PrimengModule],
+  exports: [FormsModule, ReactiveFormsModule, PrimengModule, VehicleNamePipe],
 })
 export class SharedModule {}
