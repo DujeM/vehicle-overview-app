@@ -16,20 +16,20 @@ export class VehicleListModel {
   name: string;
   manufacturer: string;
   model: string;
-  year: number;
+  year: string;
   type: string;
   fuelType: string;
   licensePlate: string;
-  active: boolean;
+  active: string;
 
   constructor(data: VehicleModel) {
     this.name = data.name;
     this.manufacturer = data.manufacturer;
     this.model = data.model;
-    this.year = data.year;
+    this.year = data.year.toString();
     this.type = data.type;
     this.fuelType = data.fuelType;
     this.licensePlate = data.licensePlate;
-    this.active = data.active;
+    this.active = data.active ? 'Yes' : 'No';
   }
 }

@@ -31,8 +31,8 @@ export class VehicleListComponent implements OnInit, OnDestroy {
         vehicles
           .map((vehicle) => new VehicleListModel(vehicle))
           .filter((vehicle) =>
-            Object.values(vehicle).some((val) =>
-              val.toString().toLowerCase().includes(searchQuery)
+            Object.values(vehicle).some((val: string) =>
+              val.toLowerCase().includes(searchQuery)
             )
           )
       ),

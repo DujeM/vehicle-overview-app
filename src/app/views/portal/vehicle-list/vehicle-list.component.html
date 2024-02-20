@@ -15,7 +15,7 @@
             <th>Type</th>
             <th>Fuel type</th>
             <th>License plate</th>
-            <th>Active</th>
+            <th>Active (yes/no)</th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-vehicle>
@@ -28,7 +28,7 @@
             <td>{{ vehicle.fuelType }}</td>
             <td>{{ vehicle.licensePlate }}</td>
             <td>
-              <ng-container *ngIf="vehicle.active; else inactive">
+              <ng-container *ngIf="vehicle.active === 'Yes'; else inactive">
                 <i class="pi pi-check-circle active-icon"></i>
               </ng-container>
               <ng-template #inactive>
