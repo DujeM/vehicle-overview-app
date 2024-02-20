@@ -33,7 +33,6 @@ export class LoginComponent {
   }
 
   login() {
-    console.log('login');
     this.router.navigateByUrl('portal');
   }
 }

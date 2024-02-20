@@ -1,7 +1,14 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { VehicleModel } from '@core/vehicle/vehicle.model';
+import { VehicleListModel, VehicleModel } from '@core/vehicle/vehicle.model';
 import { VehicleService } from '@core/vehicle/vehicle.service';
-import { Subject, takeUntil } from 'rxjs';
+import {
+  BehaviorSubject,
+  Observable,
+  Subject,
+  combineLatest,
+  map,
+  takeUntil,
+} from 'rxjs';
 
 @Component({
   selector: 'app-vehicle-list',
@@ -10,17 +17,27 @@ import { Subject, takeUntil } from 'rxjs';
 })
 export class VehicleListComponent implements OnInit, OnDestroy {
   private ngUnsubscribe = new Subject<void>();
-  vehicles: VehicleModel[] = [];
+  vehicles$ = new Observable<VehicleListModel[]>();
+  searchQuery$ = new BehaviorSubject<string>('');
 
   constructor(private vehicleService: VehicleService) {}
 
   ngOnInit(): void {
-    this.vehicleService
-      .getVehicles()
-      .pipe(takeUntil(this.ngUnsubscribe))
-      .subscribe((vehicles) => {
-        this.vehicles = vehicles;
-      });
+    this.vehicles$ = combineLatest([
+      this.searchQuery$,
+      this.vehicleService.getVehicles(),
+    ]).pipe(
+      map(([searchQuery, vehicles]) =>
+        vehicles
+          .map((vehicle) => new VehicleListModel(vehicle))
+          .filter((vehicle) =>
+            Object.values(vehicle).some((val) =>
+              val.toString().toLowerCase().includes(searchQuery)
+            )
+          )
+      ),
+      takeUntil(this.ngUnsubscribe)
+    );
   }
 
   ngOnDestroy(): void {

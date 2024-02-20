@@ -13,12 +13,7 @@ form {
   gap: 30px;
 }
 
-.p-inputtext, .p-inputwrapper, .p-float-label, .p-password, .p-component {
-  width: 100%;
-}
-
-.p-password.p-component.p-inputwrapper,
-input.p-inputtext.p-component.p-element.p-password-input {
+.p-inputtext {
   width: 100%;
 }
 

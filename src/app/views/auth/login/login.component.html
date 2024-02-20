@@ -5,7 +5,7 @@
       <label for="username">Username</label>
     </span>
     <span class="p-float-label">
-      <p-password formControlName="password" [feedback]="false"></p-password>
+      <p-password formControlName="password" [inputStyle]="{'width':'100%'}" [feedback]="false"></p-password>
       <label for="password">Password</label>
       <p class="error-message" *ngIf="password.errors?.['passwordStrength']">
         Your password must be at least 8 characters long, have an upper case letter, numeric and special characters.
